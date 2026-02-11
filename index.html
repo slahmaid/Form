@@ -669,17 +669,18 @@
           stepToShow = coverageArea === "medium_area" ? 3 : 2;
 
           if (triggerRedirect) {
-            // Special case: Villa + Small Area → MOKA PRO MAX
+            // Special case: Villa + Small Area → MOKA PRO MAX (needs connectivity question)
             if (coverageArea === "small_area") {
               if (propertyType === "villa") {
                 pendingRedirectUrl = "https://prumysl.cc/MOKA-PRO-MAX";
               } else {
                 pendingRedirectUrl = "https://prumysl.cc/moka.html";
               }
-              stepToShow = 4;
+              stepToShow = 4; // Show connectivity question
             } else if (coverageArea === "large_area") {
-              pendingRedirectUrl = "https://prumysl.cc/saqr.html";
-              stepToShow = 4;
+              // Large area redirects immediately without connectivity question
+              scheduleRedirect("https://prumysl.cc/saqr.html");
+              return;
             }
             // If medium_area, continue to step 3 (no redirect here yet)
           }
@@ -688,13 +689,13 @@
         // Step 3 logic (decide final product) when angle control chosen
         if (angleControl && triggerRedirect && !pendingRedirectUrl) {
           if (angleControl === "fixed_plus_moving") {
-            pendingRedirectUrl = "https://prumysl.cc/assas.html";
+            // Redirect immediately without connectivity question
+            scheduleRedirect("https://prumysl.cc/assas.html");
+            return;
           } else if (angleControl === "full_control") {
-            pendingRedirectUrl = "https://prumysl.cc/garde-corps.html";
-          }
-
-          if (pendingRedirectUrl) {
-            stepToShow = 4;
+            // Redirect immediately without connectivity question
+            scheduleRedirect("https://prumysl.cc/garde-corps.html");
+            return;
           }
         }
 
