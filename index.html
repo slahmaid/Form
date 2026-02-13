@@ -258,36 +258,64 @@
 
     .option-card {
       position: relative;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-      border: 2px solid transparent;
-      background: #ffffff;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        outline-color 0.18s ease;
+      border: 1.5px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, #e5f0ff 0, #f9fafb 45%, #f3f4f6 100%);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
     }
 
     .option-card-inner {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 6px 8px;
+      padding: 12px 8px 10px;
       height: 100%;
+    }
+
+    /* Custom radio visual in top-left of each card */
+    .option-card-inner::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 2px solid rgba(148, 163, 184, 0.9);
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+    }
+
+    input[type="radio"]:checked + label .option-card-inner::before {
+      border-color: #2563eb;
+      background: radial-gradient(circle at center, #2563eb 0, #1d4ed8 40%, #0f172a 100%);
+      box-shadow: 0 0 0 2px rgba(191, 219, 254, 0.9);
     }
 
     .option-media {
       width: 100%;
       aspect-ratio: 1 / 1; /* 1:1 image box */
-      border-radius: 12px;
-      background: linear-gradient(135deg, #e5f0ff, #f9fafb);
+      border-radius: 14px;
+      background: radial-gradient(circle at top, #e0f2fe 0, #eff6ff 45%, #f9fafb 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 6px;
-      color: #4b5563;
+      margin-bottom: 8px;
+      color: #1e293b;
       font-size: 0.85rem;
       font-weight: 600;
       overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.35);
     }
 
     .option-media img {
@@ -298,14 +326,15 @@
     }
 
     .option-label {
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
       text-align: center;
-      color: #111827;
+      color: #0f172a;
+      margin-bottom: 2px;
     }
 
     .option-helper {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       text-align: center;
       color: #6b7280;
       margin-top: 2px;
@@ -324,13 +353,18 @@
 
     input[type="radio"]:checked + label .option-card {
       border-color: #2563eb;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.35);
+      transform: translateY(-5px);
+      background: radial-gradient(circle at top left, #dbeafe 0, #eef2ff 40%, #e0f2fe 100%);
+      outline: 2px solid rgba(191, 219, 254, 0.9);
+      outline-offset: 0;
     }
 
     .option-card:hover {
-      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
-      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.18);
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.45);
+      background: radial-gradient(circle at top left, #e0f2fe 0, #eff6ff 40%, #f1f5f9 100%);
     }
 
     .trust-strip {
